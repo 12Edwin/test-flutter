@@ -26,8 +26,8 @@ class AutoRepository {
       body: jsonEncode(auto.toJson()),
     );
 
-    if (response.statusCode == 201) {
-      return Auto.fromJson(json.decode(response.body));
+    if (response.statusCode == 200) {
+      return new Auto(id: 0, marca: auto.marca, modelo: auto.modelo, autonomiaElectrica: auto.autonomiaElectrica, consumoCombustible: auto.consumoCombustible);
     } else {
       throw Exception('Failed to create auto');
     }
@@ -43,7 +43,7 @@ class AutoRepository {
     );
 
     if (response.statusCode == 200) {
-      return Auto.fromJson(json.decode(response.body));
+      return new Auto(id: auto.id, marca: auto.marca, modelo: auto.modelo, autonomiaElectrica: auto.autonomiaElectrica, consumoCombustible: auto.consumoCombustible);
     } else {
       throw Exception('Failed to update auto');
     }
